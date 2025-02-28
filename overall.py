@@ -6,6 +6,7 @@ SONARCLOUD_TOKEN = "44008bdc256019db2fd5c2fc7693fb2a319dc611"
 ORG_KEY = "lok-jagruti-kendra-university"
 SONAR_BASE_URL = "https://sonarcloud.io/api"
 
+
 # Step 1: Get all repositories in the organization
 projects_url = f"{SONAR_BASE_URL}/projects/search"
 params = {"organization": ORG_KEY, "ps": "500"}  # Get up to 500 repositories
