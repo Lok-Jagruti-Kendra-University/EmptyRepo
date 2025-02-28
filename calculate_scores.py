@@ -67,11 +67,7 @@ def fetch_sonarcloud_score():
         scores["Final Score"] = final_score;
         
         return scores;
-        
-        # Example: Extracting coverage score
-        code_smells = next((m["value"] for m in measures if m["metric"] == "code_smells"), 0)
-        return float(code_smells)
-    
+           
     return 0  # Default to 0 if request fails
 
 # SonarCloud Summary Page URL
