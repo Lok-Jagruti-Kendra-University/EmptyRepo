@@ -23,17 +23,31 @@ csv_file = "sonarcloud_all_projects_analysis.csv"
 
 with open(csv_file, mode="w", newline="") as file:
     writer = csv.writer(file)
-    writer.writerow(["Project", "Date", "Metric", "Value"])
+    # writer.writerow(["Project", "Date", "Metric", "Value"])
+
+    # for project in projects:
+    #     analysis_url = f"{SONAR_BASE_URL}/measures/search_history"
+    #     params = {"component": project, "metrics": metrics, "ps": "500"}
+
+    #     response = requests.get(analysis_url, params=params, headers=headers)
+    #     analysis_data = response.json()
+
+    #     for metric in analysis_data.get("measures", []):
+    #         for history in metric.get("history", []):
+    #             writer.writerow([project, history["date"], metric["metric"], history.get("value", "N/A")])
+
+    writer.writerow(["Project", "Metric", "Value"])
 
     for project in projects:
-        analysis_url = f"{SONAR_BASE_URL}/measures/search_history"
-        params = {"component": project, "metrics": metrics, "ps": "500"}
+        analysis_url = f"{SONAR_BASE_URL}/measures/component"
+        params = {"component": project, "metricKeys": metrics}
 
         response = requests.get(analysis_url, params=params, headers=headers)
         analysis_data = response.json()
 
-        for metric in analysis_data.get("measures", []):
-            for history in metric.get("history", []):
-                writer.writerow([project, history["date"], metric["metric"], history.get("value", "N/A")])
+        for metric in analysis_data.get("component", {}).get("measures", []):
+            writer.writerow([project, metric["metric"], metric.get("value", "N/A")])
 
-print(f"Analysis data saved to {csv_file}")
+print(f"Overall Code analysis saved to {csv_file}")
+
+#print(f"Analysis data saved to {csv_file}")
