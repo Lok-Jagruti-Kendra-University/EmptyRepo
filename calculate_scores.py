@@ -48,7 +48,7 @@ def fetch_sonarcloud_score():
         duplicated_lines_percentage = float(next((m["value"] for m in measures if m["metric"] == "duplicated_lines_density"), 0))
         total_files = float(next((m["value"] for m in measures if m["metric"] == "files"), 0))
 
-        if total_files = 0
+        if total_files == 0
             return 0
         ## Metrics and Weights
         #- **Code Coverage**: 30%
