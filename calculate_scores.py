@@ -13,7 +13,7 @@ def fetch_sonarcloud_score():
     """Fetch SonarCloud quality metrics."""
     url = "https://sonarcloud.io/api/measures/component"
     params = {
-        "component": "Lok-Jagruti-Kendra-University_Lara",  # Your SonarCloud project key
+        "component": "Lok-Jagruti-Kendra-University_EmptyRepo",  # Your SonarCloud project key
         "branch":"main",
         "ps":500,
         "metricKeys": "coverage, ncloc, files, statements, vulnerabilities, bugs, code_smells, security_hotspots, duplicated_lines_density, cognitive_complexity, security_rating, sqale_rating, reliability_rating"
