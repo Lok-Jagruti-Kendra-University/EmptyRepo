@@ -48,11 +48,11 @@ jobs:
           name: sonarcloud_overall
           path: sonarcloud_all_projects_analysis.csv
 
-      - name: Upload SonarCloud AIML Detect
+      - name: Github AIML Detect
         uses: actions/upload-artifact@v4
         with:
-          name: sonarcloud_aiml
-          path: sonar-report.json
+          name: github_aiml
+          path: AIML_detect.csv
 
       
   sonarqube:
