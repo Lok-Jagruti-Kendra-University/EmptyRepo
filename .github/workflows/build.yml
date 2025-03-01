@@ -47,7 +47,9 @@ jobs:
         with:
           name: sonarcloud_aiml
           path: sonar-report.json
-          
+
+      - name: Debug
+        run: ls -R
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
