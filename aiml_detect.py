@@ -1,5 +1,7 @@
 import json
 import re
+import os
+import json
 
 # Define AI/ML-related libraries and function calls
 AI_LIBRARIES = ["tensorflow", "pytorch", "scikit-learn", "keras", "xgboost", "torch", "fastai", "cv2", "nltk"]
@@ -7,9 +9,6 @@ AI_FUNCTIONS = ["fit", "predict", "train", "evaluate", "transform", "generate", 
 
 # Define AI-related file paths
 AI_PATHS = ["models/", "ml/", "training/", "ai/", "deep_learning/"]
-
-import os
-import json
 
 def load_sonar_report(report_file):
     """Loads SonarCloud report JSON if it exists."""
