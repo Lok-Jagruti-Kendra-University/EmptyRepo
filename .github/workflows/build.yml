@@ -30,9 +30,6 @@ jobs:
       - name: Debug
         run: ls -R   
         
-      - name: Run AI/ML Code Detector
-        run: python ai_ml_code_detector.py
-        
       - name: AIML Scores
         run: python aiml_detect.py  # Custom script for scoring
               
