@@ -26,8 +26,11 @@ jobs:
         
       - name: Aggregate Scores
         run: python overall.py  # Custom script for scoring
+
+      - name: AIML Scores
+        run: python aiml_detect.py  # Custom script for scoring
          
-      - name: Upload SonarCloud Summary Excel and csv
+      - name: Upload SonarCloud Summary Excel
         uses: actions/upload-artifact@v4
         with:
           name: sonarcloud_summary
@@ -38,6 +41,12 @@ jobs:
         with:
           name: sonarcloud_overall
           path: sonarcloud_all_projects_analysis.csv
+
+      - name: Upload SonarCloud AIML Detect
+        uses: actions/upload-artifact@v4
+        with:
+          name: sonarcloud_aiml
+          path: sonar-report.json
           
   sonarqube:
     name: SonarQube
