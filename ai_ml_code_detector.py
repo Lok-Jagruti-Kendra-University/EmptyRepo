@@ -1,4 +1,5 @@
 import os
+import csv
 
 # AI/ML-related keywords
 ai_ml_keywords = [
@@ -65,6 +66,12 @@ if detected_code:
             print(f"Functions/Keywords: {', '.join(details['functions'])}")
         if details["libraries"]:
             print(f"Libraries: {', '.join(details['libraries'])}")
-    #exit(1)  # Fail the job if AI/ML code is detected
+    exit(1)  # Fail the job if AI/ML code is detected
 else:
     print("No AI/ML-related code detected.")
+
+csv_file = "AIML_detect.csv"
+with open(csv_file, mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["Project", "Total Files", "Total Libraries", "Total Functions"])
+    writer.writerow(["EmptyRepo", ai_ml_files, total_ai_ml_libraries, total_ai_ml_functions])
