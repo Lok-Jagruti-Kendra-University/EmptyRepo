@@ -8,6 +8,27 @@ AI_FUNCTIONS = ["fit", "predict", "train", "evaluate", "transform", "generate", 
 # Define AI-related file paths
 AI_PATHS = ["models/", "ml/", "training/", "ai/", "deep_learning/"]
 
+import os
+import json
+
+def load_sonar_report(report_file):
+    """Loads SonarCloud report JSON if it exists."""
+    if not os.path.exists(report_file):
+        raise FileNotFoundError(f"Sonar report file '{report_file}' not found! Ensure SonarCloud analysis ran successfully.")
+
+    with open(report_file, "r") as file:
+        return json.load(file)
+
+# Main Execution
+report_file = "sonar-report.json"
+
+try:
+    sonar_data = load_sonar_report(report_file)
+    print("Sonar report loaded successfully!")
+except FileNotFoundError as e:
+    print(str(e))
+    exit(1)
+
 def load_sonar_report(report_file):
     """ Load the SonarCloud JSON report """
     with open(report_file, "r") as file:
@@ -46,19 +67,19 @@ def analyze_sonar_data(sonar_data):
 
 def generate_report(ai_files, total_files):
     """ Generate a summary report """
-    print("\n🔍 AI/ML Detection Report from SonarCloud Analysis 🔍")
+    print("\n AI/ML Detection Report from SonarCloud Analysis ")
     print("=" * 50)
-    print(f"📂 Total Files Scanned: {total_files}")
-    print(f"🤖 AI/ML-Related Files Detected: {len(ai_files)}\n")
+    print(f"Total Files Scanned: {total_files}")
+    print(f"AI/ML-Related Files Detected: {len(ai_files)}\n")
 
     if ai_files:
         for file in ai_files:
-            print(f"📄 File: {file['file']}")
+            print(f" File: {file['file']}")
             print(f"  🔹 AI Libraries Found: {', '.join(file['ai_libraries']) if file['ai_libraries'] else 'None'}")
             print(f"  🔹 AI Functions Found: {', '.join(file['ai_functions']) if file['ai_functions'] else 'None'}")
-            print(f"  🔹 AI-Related Path: {'✅ Yes' if file['is_ai_related_path'] else '❌ No'}\n")
+            print(f"  🔹 AI-Related Path: {'Yes' if file['is_ai_related_path'] else 'No'}\n")
     else:
-        print("✅ No AI/ML-related code detected.")
+        print("No AI/ML-related code detected.")
 
 # Run the analysis
 sonar_data = load_sonar_report("sonar-report.json")
