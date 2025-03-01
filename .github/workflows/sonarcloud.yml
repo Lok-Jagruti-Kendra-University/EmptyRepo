@@ -57,6 +57,7 @@ jobs:
             # mandatory
             -Dsonar.projectKey=Lok-Jagruti-Kendra-University_EmptyRepo
             -Dsonar.organization=lok-jagruti-kendra-university
+            -Dsonar.report.export.path=sonar-report.json
             # Comma-separated paths to directories containing main source files.
             #-Dsonar.sources= # optional, default is project base directory
             # Comma-separated paths to directories containing test source files.
