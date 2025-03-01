@@ -19,12 +19,12 @@ jobs:
           python-version: '3.9'
 
       - name: Install dependencies
-        run: pip install requests pandas openpyxl bs4
+        run: pip install requests pandas openpyxl bs4 re
 
       - name: Aggregate Scores
         run: python calculate_scores.py  # Custom script for scoring
         
-      - name: Aggregate Scores
+      - name: overall Scores
         run: python overall.py  # Custom script for scoring
 
       - name: AIML Scores
