@@ -70,7 +70,7 @@ if detected_code:
 else:
     print("No AI/ML-related code detected.")
 
-csv_file = "AIML_detect.csv"
+csv_file = "aiml_detect.csv"
 with open(csv_file, mode="w", newline="") as file:
     writer = csv.writer(file)
     writer.writerow(["Project", "Total Files", "Total Libraries", "Total Functions"])
