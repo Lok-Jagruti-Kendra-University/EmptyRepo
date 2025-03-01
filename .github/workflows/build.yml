@@ -27,12 +27,12 @@ jobs:
       - name: overall Scores
         run: python overall.py  # Custom script for scoring
 
-      - name: AIML Scores
-        run: python aiml_detect.py  # Custom script for scoring
-        
       - name: Debug
         run: ls -R   
-        
+      
+      - name: AIML Scores
+        run: python aiml_detect.py  # Custom script for scoring
+              
       - name: Upload SonarCloud Summary Excel
         uses: actions/upload-artifact@v4
         with:
