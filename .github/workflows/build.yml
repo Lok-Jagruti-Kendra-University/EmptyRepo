@@ -29,7 +29,10 @@ jobs:
 
       - name: AIML Scores
         run: python aiml_detect.py  # Custom script for scoring
-         
+        
+      - name: Debug
+        run: ls -R   
+        
       - name: Upload SonarCloud Summary Excel
         uses: actions/upload-artifact@v4
         with:
@@ -48,8 +51,7 @@ jobs:
           name: sonarcloud_aiml
           path: sonar-report.json
 
-      - name: Debug
-        run: ls -R
+      
   sonarqube:
     name: SonarQube
     runs-on: ubuntu-latest
